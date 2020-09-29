@@ -6496,7 +6496,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prism_es6_components_prism_markup_templating__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prism_es6_components_prism_markup_templating__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var prism_es6_components_prism_php__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prism-es6/components/prism-php */ "./node_modules/prism-es6/components/prism-php.js");
 /* harmony import */ var prism_es6_components_prism_php__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prism_es6_components_prism_php__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var vue_code_highlight__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-code-highlight */ "./node_modules/vue-code-highlight/dist/vue-code-highlight.esm.js");
+/* harmony import */ var prism_es6_components_prism_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prism-es6/components/prism-css */ "./node_modules/prism-es6/components/prism-css.js");
+/* harmony import */ var prism_es6_components_prism_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prism_es6_components_prism_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_code_highlight__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-code-highlight */ "./node_modules/vue-code-highlight/dist/vue-code-highlight.esm.js");
 //
 //
 //
@@ -6505,14 +6507,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['language'],
   components: {
-    VueCodeHighlight: vue_code_highlight__WEBPACK_IMPORTED_MODULE_4__["component"]
+    VueCodeHighlight: vue_code_highlight__WEBPACK_IMPORTED_MODULE_5__["component"]
   }
 });
 
@@ -41723,6 +41727,68 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+/***/ "./node_modules/prism-es6/components/prism-css.js":
+/*!********************************************************!*\
+  !*** ./node_modules/prism-es6/components/prism-css.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function (Prism) {
+
+	var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
+
+	Prism.languages.css = {
+		'comment': /\/\*[\s\S]*?\*\//,
+		'atrule': {
+			pattern: /@[\w-]+?[\s\S]*?(?:;|(?=\s*\{))/i,
+			inside: {
+				'rule': /@[\w-]+/
+				// See rest below
+			}
+		},
+		'url': RegExp('url\\((?:' + string.source + '|.*?)\\)', 'i'),
+		'selector': RegExp('[^{}\\s](?:[^{};"\']|' + string.source + ')*?(?=\\s*\\{)'),
+		'string': {
+			pattern: string,
+			greedy: true
+		},
+		'property': /[-_a-z\xA0-\uFFFF][-\w\xA0-\uFFFF]*(?=\s*:)/i,
+		'important': /!important\b/i,
+		'function': /[-a-z0-9]+(?=\()/i,
+		'punctuation': /[(){};:,]/
+	};
+
+	Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+
+	var markup = Prism.languages.markup;
+	if (markup) {
+		markup.tag.addInlined('style', 'css');
+
+		Prism.languages.insertBefore('inside', 'attr-value', {
+			'style-attr': {
+				pattern: /\s*style=("|')(?:\\[\s\S]|(?!\1)[^\\])*\1/i,
+				inside: {
+					'attr-name': {
+						pattern: /^\s*style/i,
+						inside: markup.tag.inside
+					},
+					'punctuation': /^\s*=\s*['"]|['"]\s*$/,
+					'attr-value': {
+						pattern: /.+/i,
+						inside: Prism.languages.css
+					}
+				},
+				alias: 'language-css'
+			}
+		}, markup.tag);
+	}
+
+}(Prism));
+
+
+/***/ }),
+
 /***/ "./node_modules/prism-es6/components/prism-markup-templating.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/prism-es6/components/prism-markup-templating.js ***!
@@ -45558,7 +45624,7 @@ var render = function() {
     [
       _c(
         "vue-code-highlight",
-        { attrs: { language: "javascript php css" } },
+        { attrs: { language: _vm.language } },
         [_vm._t("default")],
         2
       )
