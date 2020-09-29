@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+  web:
+    image: sdkconsultoria/php-dev-serve
+    links:
+      - sqlite3
+    networks:
+      - servers
+    volumes:
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      - ./:/app
+    ports:
+        - 80:80
+    secrets:
+      - host_ssh_key
+
+  sqlite3:
+    image: keinos/sqlite3:latest
+    networks:
+      - servers
+    ports:
+        - 3306:3306
+secrets:
+  host_ssh_key:
+    file: ~/.ssh/id_rsa
+networks:
+  servers:
+    external: true
