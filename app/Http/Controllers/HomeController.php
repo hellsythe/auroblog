@@ -3,26 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BlogPost;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Display a post list for clients
+     * @return \Illuminate\Http\Response
      */
-    public function __construct()
+    public function blogPosts()
     {
-        $this->middleware('auth');
+        dd(BlogPost::all());
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * Display a one post for clients
+     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function blogPost($slug)
     {
-        return view('home');
+        return view('blog_posts.details', [
+            'post' => BlogPost::where('slug', $slug)->firstOrFail()
+        ]);
     }
+
 }

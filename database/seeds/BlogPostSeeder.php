@@ -16,7 +16,8 @@ class BlogPostSeeder extends Seeder
             array_push($content, [
                 'title' => "Post de ejemplo $i",
                 'slug' => "post-de-ejemplo-$i",
-                'content' => 'Hola soy el primer post de ejemplo',
+                'content' => "Hola soy el $i post de ejemplo",
+                'content_md' => "Hola soy el $i post de ejemplo",
                 'created_at' => now()
             ]);
         }
