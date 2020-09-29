@@ -19,6 +19,8 @@ class CreateBlogPostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('content');
+            $table->string('content_md')->nullable();
+            $table->index(['slug', 'created_at', 'title']);
         });
     }
 
