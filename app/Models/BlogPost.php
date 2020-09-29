@@ -61,7 +61,10 @@ class BlogPost extends Model
      */
     public function getPreviewAttribute() : string
     {
-        return substr(strip_tags($this->content_md), 0, 300);
+        /**
+         * para no hacer todo este proceso podria ser mejor usar un nuevo campo en la tabla
+         */
+        return substr(htmlspecialchars_decode(strip_tags($this->content_md)), 0, 300);
     }
 
 }
