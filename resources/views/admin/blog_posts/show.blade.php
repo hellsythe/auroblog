@@ -23,11 +23,9 @@
         <tr>
             <th>{{$post::getLabel('content_md')}}</th>
             <td>
-                <div id="app">
-                    <highlight-component>
-                        {!!$post->content_md!!}
-                    </highlight-component>
-                </div>
+                <highlight-component>
+                    {!!$post->content_md!!}
+                </highlight-component>
             </td>
         </tr>
         <tr>
