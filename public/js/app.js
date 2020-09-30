@@ -6498,9 +6498,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prism_es6_components_prism_php__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prism_es6_components_prism_php__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var prism_es6_components_prism_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prism-es6/components/prism-css */ "./node_modules/prism-es6/components/prism-css.js");
 /* harmony import */ var prism_es6_components_prism_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prism_es6_components_prism_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var vue_code_highlight__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-code-highlight */ "./node_modules/vue-code-highlight/dist/vue-code-highlight.esm.js");
-//
-//
 //
 //
 //
@@ -6512,13 +6509,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['language'],
-  components: {
-    VueCodeHighlight: vue_code_highlight__WEBPACK_IMPORTED_MODULE_5__["component"]
-  }
-});
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -45621,15 +45612,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c(
-        "vue-code-highlight",
-        { attrs: { language: _vm.language } },
-        [_vm._t("default")],
-        2
-      )
-    ],
-    1
+    { directives: [{ name: "highlight", rawName: "v-highlight" }] },
+    [_vm._t("default")],
+    2
   )
 }
 var staticRenderFns = []
@@ -57855,6 +57840,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _fortawesome_fontawesome_free_js_regular__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_regular__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/fontawesome-free/js/brands */ "./node_modules/@fortawesome/fontawesome-free/js/brands.js");
 /* harmony import */ var _fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_fontawesome_free_js_brands__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue_code_highlight__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-code-highlight */ "./node_modules/vue-code-highlight/dist/vue-code-highlight.esm.js");
+
 
 
 
@@ -57869,6 +57856,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+Vue.use(vue_code_highlight__WEBPACK_IMPORTED_MODULE_5__["default"]); //registers the v-highlight directive
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

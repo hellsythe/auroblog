@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\BlogPost;
 
 class BlogPostSeeder extends Seeder
 {
@@ -21,6 +22,19 @@ class BlogPostSeeder extends Seeder
                 'created_at' => now()
             ]);
         }
+
+        $model = new BlogPost();
+        $model->title = "Post markdown Ejemplo";
+        $model->content = '```javascript
+var s = "JavaScript syntax highlighting";
+alert(s);
+```
+
+```php
+$variable = "95";
+echo $variable;
+```';
+        $model->save();
 
         DB::table('blog_posts')->insert($content);
     }
