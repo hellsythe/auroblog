@@ -13,7 +13,10 @@ class HomeController extends Controller
      */
     public function blogPosts()
     {
-        dd(BlogPost::all());
+        return view('blog_posts.index',[
+            'posts' => BlogPost::orderBy('created_at', 'desc')->paginate(10),
+            'attributes' => BlogPost::ATTRIBUTES
+        ]);
     }
 
     /**

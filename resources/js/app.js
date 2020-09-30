@@ -3,6 +3,8 @@ import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
 import '@fortawesome/fontawesome-free/js/brands'
+import VueCodeHighlight from 'vue-code-highlight';
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -13,6 +15,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.use(VueCodeHighlight) //registers the v-highlight directive
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
