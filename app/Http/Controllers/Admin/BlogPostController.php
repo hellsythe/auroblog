@@ -20,6 +20,12 @@ class BlogPostController extends Controller
         if ($request->title) {
             $posts->where('title', 'like', "%{$request->input('title')}%");
         }
+        /**
+         * order era un parametro en la query donde pensaba hacer la ordenacion personalizada ejemplo
+         * order = tilte+ = seria ordenar por titulo de mayor a menor
+         * order = tilte = seria ordenar por titulo de menor a mayor
+         * para que el admistrador pudiera ordenar sin limitaciones, pero por el tiempo ya no lo termine de implementar
+         */
         $posts = $posts->paginate($request->input('elements')??10)->appends(request()->only(['page','elements', 'title', 'order']));;
 
         return view('admin.blog_posts.index',[
