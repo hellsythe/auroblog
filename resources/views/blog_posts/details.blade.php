@@ -13,7 +13,9 @@
                 <h1 class="display-4">{{ $post->title }}</h1>
                 <p>{{$post::getLabel('created_at')}}: <small>{{$post->created_at}}</small></p>
                 <p class="lead">
-                    {!! $post->content_md !!}
+                    <highlight-component>
+                        {!!$post->content_md!!}
+                    </highlight-component>
                 </p>
             </div>
         </div>
