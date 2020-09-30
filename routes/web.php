@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['web', 'auth', 'check.browser'])
+Route::middleware(['web', 'check.browser'])
 ->group(function(){
     Route::get('/', 'HomeController@BlogPosts')->name('posts');
     Route::get('/posts/{slug}', 'HomeController@blogPost')->name('post');

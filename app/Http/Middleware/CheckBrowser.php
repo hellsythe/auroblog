@@ -25,9 +25,9 @@ class CheckBrowser
         $agent = $request->header('User-Agent');
 
         if(strpos($agent, 'MSIE') !== false){
-            return $next($request);
+            return redirect('https://browsehappy.com/');
         }
 
-        return redirect('https://browsehappy.com/');
+        return $next($request);
     }
 }
